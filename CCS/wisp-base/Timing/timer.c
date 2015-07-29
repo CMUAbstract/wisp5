@@ -47,8 +47,14 @@ void Timer_LooseDelay(uint16_t usTime32kHz)
 // Interrupt 0 for timer A2 (CCR0). Used in low power ACLK delay routine.
 //
 ////////////////////////////////////////////////////////////////////////////
-#pragma vector=TIMER2_A0_VECTOR //TCCR0 Interrupt Vector for TIMER A1
+#if defined(__TI_COMPILER_VERSION__) || defined(__IAR_SYSTEMS_ICC__)
+#pragma vector=TIMER2_A0_VECTOR
 __interrupt void INT_Timer2A0(void)
+#elif defined(__GNUC__)
+void __attribute__ ((interrupt(TIMER2_A0_VECTOR))) INT_Timer2A0 (void)
+#else
+#error Compiler not supported!
+#endif
 {
     if(wakeOnDelayTimer) {
         __bic_SR_register_on_exit(LPM3_bits);

@@ -263,8 +263,15 @@ uint8_t UART_isRxDone() {
  * Handles transmit and receive interrupts for the UART module.
  * Interrupts typically occur once after each byte transmitted/received.
  */
+#if defined(__TI_COMPILER_VERSION__) || defined(__IAR_SYSTEMS_ICC__)
 #pragma vector=USCI_A0_VECTOR
-__interrupt void USCI_A0_ISR(void) {
+__interrupt void USCI_A0_ISR(void)
+#elif defined(__GNUC__)
+void __attribute__ ((interrupt(USCI_A0_VECTOR))) USCI_A0_ISR (void)
+#else
+#error Compiler not supported!
+#endif
+{
     uint8_t rec;
 
     switch (__even_in_range(UCA0IV, USCI_UART_UCTXCPTIFG)) {
