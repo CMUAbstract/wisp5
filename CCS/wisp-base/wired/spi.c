@@ -45,7 +45,7 @@ BOOL SPI_initialize() {
     UCA1BR0 = 3; // 500KHz for 4MHz clock
     UCA1BR1 = 0;
     UCA1IFG = 0;
-    UCA0MCTLW = 0;  // No modulation, I don't think it is vital to write this command since the default should be like that.
+    UCA1MCTLW = 0;  // No modulation, I don't think it is vital to write this command since the default should be like that.
 //	BITSET(P2SEL1 , PIN_ACCEL_SCLK | PIN_ACCEL_MISO | PIN_ACCEL_MOSI);
 //	BITCLR(P2SEL0 , PIN_ACCEL_SCLK | PIN_ACCEL_MISO | PIN_ACCEL_MOSI);
     BITCLR(UCA1CTL1, UCSWRST);
