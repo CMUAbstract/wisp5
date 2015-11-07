@@ -24,28 +24,28 @@ void WISP_getDataBuffers(WISP_dataStructInterface_t* clientStruct) {
  *  Registers a callback for ACK event
  */
 void WISP_registerCallback_ACK(void(*fnPtr)(void)){
-	RWData.akHook = ((void*)(fnPtr));
+	RWData.akHook = fnPtr;
 }
 
 /**
  * Registers a callback for READ event
  */
 void WISP_registerCallback_READ(void(*fnPtr)(void)){
-	RWData.rdHook = ((void*)(fnPtr));
+	RWData.rdHook = fnPtr;
 }
 
 /**
  * Registers a callback for a WRITE event
  */
 void WISP_registerCallback_WRITE(void(*fnPtr)(void)){
-	RWData.wrHook = ((void*)(fnPtr));
+	RWData.wrHook = fnPtr;
 }
 
 /**
  * Registers a callback for a BLOCKWRITE event
  */
 void WISP_registerCallback_BLOCKWRITE(void(*fnPtr)(void)){
-	RWData.bwrHook =((void*)(fnPtr));
+	RWData.bwrHook =fnPtr;
 }
 
 

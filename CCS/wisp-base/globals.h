@@ -94,6 +94,9 @@
 #include "config/wispGuts.h"
 
 //TYPEDEFS----------------------------------------------------------------------------------------------------------------------------
+
+typedef void (hook_func_t)(void);
+
 //THE RFID STRUCT FOR INVENTORY STATE VARS
 typedef struct {
     uint8_t     TRext;                      /** @todo What is this member? */
@@ -126,10 +129,10 @@ typedef struct {
     uint16_t*    bwrBufPtr;                  /* for BlockWrite this will hold a pointer to the data buffer containing write data */
 
     //Function Hooks
-    void*       *akHook;                    /* this function is called with no params or return after an ack command response   */
-    void*       *wrHook;                    /* this function is called with no params or return after a write command response  */
-    void*       *bwrHook;                   /* this function is called with no params or return after a write command response  */
-    void*       *rdHook;                    /* this function is called with no params or return after a read command response   */
+    hook_func_t* akHook;                     /* this function is called with no params or return after an ack command response   */
+    hook_func_t* wrHook;                     /* this function is called with no params or return after a write command response  */
+    hook_func_t* bwrHook;                    /* this function is called with no params or return after a write command response  */
+    hook_func_t* rdHook;                     /* this function is called with no params or return after a read command response   */
 
     //Memory Map Bank Ptrs
     uint8_t*    RESBankPtr;                 /* for read command, this is a pointer to the virtual, mapped Reserved Bank         */
