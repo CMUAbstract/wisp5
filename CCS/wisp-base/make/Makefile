@@ -1,4 +1,4 @@
-TI_ROOT := /usr0/home/acolin/ti
+TI_ROOT := /opt/ti
 CCS_ROOT := $(TI_ROOT)/ccsv6
 CG_TOOL_ROOT := $(CCS_ROOT)/tools/compiler/ti-cgt-msp430_4.4.3
 CG_TOOL_LIB := $(CG_TOOL_ROOT)/bin

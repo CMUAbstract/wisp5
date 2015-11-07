@@ -1,6 +1,4 @@
-ROOT := /usr0/home/acolin
-DEV_ROOT := $(ROOT)/dev
-TOOLCHAIN_ROOT := $(ROOT)/ti/msp430-gcc
+TOOLCHAIN_ROOT := /opt/ti/msp430-gcc
 
 DEVICE  = msp430fr5969
 PREFIX = $(TOOLCHAIN_ROOT)/bin/msp430-elf-
