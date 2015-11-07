@@ -29,10 +29,10 @@ OBJECTS = \
 	Timing/timer.o \
 	Sensors/accel.o \
 	Math/crc16_LUT.o \
+	RFID/interface.o \
 
 # TODO: RFID is written in assembly that is specific to TI compiler and
 # is not compilable by GCC. Hence, for now, exclude RFID in GCC build.
-#	RFID/interface.c \
 #	RFID/rfid_BlockWriteHandle.c \
 #	RFID/rfid_Handles.c \
 #	RFID/rfid_ReadHandle.c \
