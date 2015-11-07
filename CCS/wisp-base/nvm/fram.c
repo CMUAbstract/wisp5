@@ -20,7 +20,7 @@ void FRAM_init(void){
 
 ////// Write functions with the physical address
 
-void FRAM_write_long_array(uint32_t *address, uint16_t numberOfLongs , uint32_t *writeData){
+void FRAM_write_long_array(unsigned long *address, uint16_t numberOfLongs , uint32_t *writeData){
 
 	int i;
 
@@ -32,7 +32,7 @@ void FRAM_write_long_array(uint32_t *address, uint16_t numberOfLongs , uint32_t 
 
 }
 
-void FRAM_write_int_array(uint16_t *address, uint16_t numberOfInts , uint16_t *writeData){
+void FRAM_write_int_array(unsigned int *address, uint16_t numberOfInts , uint16_t *writeData){
 
 	int i;
 
