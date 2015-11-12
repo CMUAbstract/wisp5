@@ -37,18 +37,12 @@ BOOL SPI_initialize() {
 
 
     // Hardware peripheral initialization
-    BITSET(UCA1CTL1, UCSWRST);
+    BITSET(UCA1CTLW0, UCSWRST);
 
-//  UCA1CTL0 = UCMST | UCSYNC | UCCKPH | UCMSB;      // This instruction seem to work wrong since UA1CTL0 is an 8-bit register.
-    UCA1CTL0 = (UCMST>>8) | (UCSYNC>>8) | (UCCKPH>>8) | (UCMSB>>8);
-    UCA1CTL1 = UCSSEL_3 | UCSWRST;
-    UCA1BR0 = 3; // 500KHz for 4MHz clock
-    UCA1BR1 = 0;
+    UCA1CTLW0 = UCMST | UCSYNC | UCCKPH | UCMSB | UCSSEL__SMCLK | UCSWRST;
+    UCA1BRW = 3; // 500KHz for 4MHz clock
     UCA1IFG = 0;
-    UCA1MCTLW = 0;  // No modulation, I don't think it is vital to write this command since the default should be like that.
-//	BITSET(P2SEL1 , PIN_ACCEL_SCLK | PIN_ACCEL_MISO | PIN_ACCEL_MOSI);
-//	BITCLR(P2SEL0 , PIN_ACCEL_SCLK | PIN_ACCEL_MISO | PIN_ACCEL_MOSI);
-    BITCLR(UCA1CTL1, UCSWRST);
+    BITCLR(UCA1CTLW0, UCSWRST);
 
     // State variable initialization
     spiSM.bPortInUse = FALSE;
