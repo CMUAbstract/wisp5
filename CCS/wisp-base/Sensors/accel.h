@@ -20,6 +20,9 @@ typedef struct {
     uint8_t x;
     uint8_t y;
     uint8_t z;
+#ifdef __clang__
+    uint8_t padding; // clang crashes with type size mismatch assert failure
+#endif
 } threeAxis_t_8;
 
 BOOL ACCEL_initialize();
