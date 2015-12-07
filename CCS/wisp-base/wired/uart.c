@@ -90,6 +90,23 @@ void UART_init(void) {
 
 }
 
+void UART_teardown()
+{
+    // disable UART
+    // Not sure how to do this best, but set all UCA0* registers to
+    // their default values.  See User's Guide for default values.
+    PUART_TXSEL0 &= ~PIN_UART_TX;
+    PUART_TXSEL1 &= ~PIN_UART_TX;
+    PUART_RXSEL0 &= ~PIN_UART_RX;
+    PUART_RXSEL1 &= ~PIN_UART_RX;
+    UCA0CTLW0 = 0x0001;
+    UCA0BR0 = 0x0000;
+    UCA0MCTLW = 0x0000;
+    UCA0IE = 0x0000;
+    UCA0IFG = 0x0000;
+}
+
+
 /**
  * Transmit the contents of the given character buffer. Do not block.
  *
