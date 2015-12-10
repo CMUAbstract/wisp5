@@ -20,7 +20,6 @@ typedef struct {
     uint8_t isRxBusy; // Is the module currently in the middle of a receive operation?
     uint8_t* rxPtr; // Pointer to the next byte to be received
     uint16_t rxBytesRemaining; // Maximum number of bytes left to receive
-    uint8_t rxTermChar; // Stop receiving on this char.
 } uart_sm_t;
 
 static volatile uart_sm_t UART_SM;
@@ -86,7 +85,6 @@ void UART_init(void) {
     UART_SM.txBytesRemaining = 0;
     UART_SM.isRxBusy = FALSE;
     UART_SM.rxBytesRemaining = 0;
-    UART_SM.rxTermChar = '\0';
 
 }
 
@@ -190,7 +188,7 @@ uint8_t UART_isTxBusy() {
  * @param rxBuf the character buffer to be received to
  * @param size the number of bytes to receive
  */
-void UART_asyncReceive(uint8_t* rxBuf, uint16_t size, uint8_t terminate) {
+void UART_asyncReceive(uint8_t* rxBuf, uint16_t size) {
 
     // Block until prior reception has completed
     while (UART_SM.isRxBusy)
@@ -200,7 +198,6 @@ void UART_asyncReceive(uint8_t* rxBuf, uint16_t size, uint8_t terminate) {
     UART_SM.isRxBusy = TRUE;
     UART_SM.rxPtr = rxBuf;
     UART_SM.rxBytesRemaining = size;
-    UART_SM.rxTermChar = terminate;
 
     UCA0IFG &= ~(UCRXIFG); // Clear byte completion flag
 
@@ -218,9 +215,9 @@ void UART_asyncReceive(uint8_t* rxBuf, uint16_t size, uint8_t terminate) {
  * @param size the number of bytes to receive
  *
  */
-void UART_receive(uint8_t* rxBuf, uint16_t size, uint8_t terminate) {
+void UART_receive(uint8_t* rxBuf, uint16_t size) {
 
-    UART_asyncReceive(rxBuf, size, terminate);
+    UART_asyncReceive(rxBuf, size);
 
     // Block until complete
     while (UART_SM.isRxBusy)
@@ -231,7 +228,7 @@ void UART_receive(uint8_t* rxBuf, uint16_t size, uint8_t terminate) {
  * Receive to the given character buffer. Block until complete,
  *  and use UART status register polling instead of interrupts.
  */
-void UART_critReceive(uint8_t* rxBuf, uint16_t size, uint8_t terminate) {
+void UART_critReceive(uint8_t* rxBuf, uint16_t size) {
 
     // Block until prior reception has completed
     while (UART_SM.isRxBusy)
@@ -241,7 +238,6 @@ void UART_critReceive(uint8_t* rxBuf, uint16_t size, uint8_t terminate) {
     UART_SM.isRxBusy = TRUE;
     UART_SM.rxPtr = rxBuf;
     UART_SM.rxBytesRemaining = size;
-    UART_SM.rxTermChar = terminate;
 
     UCA0IFG &= ~(UCRXIFG); // Clear byte completion flag
 
@@ -252,9 +248,6 @@ void UART_critReceive(uint8_t* rxBuf, uint16_t size, uint8_t terminate) {
 
         uint8_t rec = UCA0RXBUF; // Read next byte
         *(UART_SM.rxPtr++) = rec; // Store byte
-
-        if (rec == UART_SM.rxTermChar)
-            break; // Stop receiving when the termination charactor is received
     }
 
     UART_SM.isRxBusy = FALSE;
@@ -298,11 +291,9 @@ void __attribute__ ((interrupt(USCI_A0_VECTOR))) USCI_A0_ISR (void)
         if (UART_SM.rxBytesRemaining--) {
             rec = UCA0RXBUF; // Read next byte
             *(UART_SM.rxPtr++) = rec; // Store byte
-        } else {
-            rec = ~UART_SM.rxTermChar;
         }
 
-        if ((0 == UART_SM.rxBytesRemaining) || (rec == UART_SM.rxTermChar)) {
+        if (0 == UART_SM.rxBytesRemaining) {
             UCA0IE &= ~(UCRXIE); // Disable USCI_A0 RX interrupt
             UART_SM.isRxBusy = FALSE;
         }
