@@ -1,4 +1,4 @@
-EXEC = libwisp-base.a
+EXEC = libwispbase.a
 
 OBJECTS = \
 	wired/spi.o \
