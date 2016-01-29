@@ -1,4 +1,4 @@
-EXEC = libwispbase.a
+LIB = libwispbase
 
 OBJECTS = \
 	wired/spi.o \
@@ -18,8 +18,6 @@ OBJECTS = \
 #	RFID/rfid_ReadHandle.c \
 #	RFID/rfid_WriteHandle.c \
 
+override SRC_ROOT = ..
+
 include $(MAKER_ROOT)/Makefile.gcc
-
-SRC_DIR := ..
-
-VPATH = $(SRC_DIR)
