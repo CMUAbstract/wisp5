@@ -6,7 +6,7 @@
  * @author Aaron Parks, Justin Reina
  */
 
-#include "../globals.h"
+#include "globals.h"
 
 /**	@fcn		adc12_genRN16 (void)
  *  @brief		generate a random 16-bit value by sampling b0 of the temperature sensor.

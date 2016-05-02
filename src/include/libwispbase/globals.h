@@ -13,7 +13,7 @@
 #define GLOBALS_H_
 
 #include <msp430.h>
-#include "config/pin-assign.h"     /* low level pinDefs, IDs, etc. */
+#include "libwispbase/pin-assign.h"     /* low level pinDefs, IDs, etc. */
 
 /* Global constants */
 #define FOREVER         (1)
@@ -91,7 +91,7 @@
 
 #ifndef __ASSEMBLER__
 #include <stdint.h>                                                     /* use xintx_t good var defs (e.g. uint8_t)             */
-#include "config/wispGuts.h"
+#include "libwispbase/wispGuts.h"
 
 //TYPEDEFS----------------------------------------------------------------------------------------------------------------------------
 

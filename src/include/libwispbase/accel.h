@@ -8,7 +8,7 @@
 #ifndef ACCEL_H_
 #define ACCEL_H_
 
-#include "../globals.h"
+#include "libwispbase/globals.h"
 
 typedef struct {
     uint16_t x;

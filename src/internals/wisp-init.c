@@ -6,7 +6,7 @@
  * @author Aaron Parks, Justin Reina
  */
 
-#include "../globals.h"
+#include "globals.h"
 
 // Gen2 state variables
 RFIDstruct  rfid;   // inventory state

@@ -9,7 +9,7 @@
 #ifndef TIMER_H_
 #define TIMER_H_
 
-#include "../globals.h"
+#include "libwispbase/globals.h"
 
 /*
  * Timing macros based on LFXT clock frequency

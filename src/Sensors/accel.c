@@ -6,9 +6,9 @@
  */
 #include "accel.h"
 #include "accel_registers.h"
-#include "../globals.h"
-#include "../Timing/timer.h"
-#include "../wired/spi.h"
+#include "globals.h"
+#include "timer.h"
+#include "spi.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 

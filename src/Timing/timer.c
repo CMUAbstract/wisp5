@@ -7,7 +7,7 @@
  */
 
 #include "timer.h"
-#include "../globals.h"
+#include "globals.h"
 
 static BOOL wakeOnDelayTimer;       // A flag indicating we are waiting for a delay timer to expire
 

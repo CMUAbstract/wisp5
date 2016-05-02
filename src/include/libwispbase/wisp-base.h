@@ -11,15 +11,15 @@
 #define WISP_BASE_H_
 
 //#include <msp430.h>
-#include "globals.h" // Get these outta here (breaks encapsulation barrier)
-#include "wired/spi.h"
-#include "wired/uart.h"
-#include "Sensors/accel.h"
-#include "nvm/fram.h"
-#include "RFID/rfid.h"
-#include "config/wispGuts.h"
-#include "Timing/timer.h"
-#include "rand/rand.h"
+#include "libwispbase/globals.h" // Get these outta here (breaks encapsulation barrier)
+#include "libwispbase/spi.h"
+#include "libwispbase/uart.h"
+#include "libwispbase/accel.h"
+#include "libwispbase/fram.h"
+#include "libwispbase/rfid.h"
+#include "libwispbase/wispGuts.h"
+#include "libwispbase/timer.h"
+#include "libwispbase/rand.h"
 
 void WISP_init(void);
 void WISP_getDataBuffers(WISP_dataStructInterface_t* clientStruct);

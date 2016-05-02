@@ -7,7 +7,7 @@
 
 #include <msp430.h>
 #include "uart.h"
-#include "../globals.h"
+#include "globals.h"
 
 /**
  * State variables for the UART module

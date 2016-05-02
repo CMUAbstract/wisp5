@@ -8,7 +8,7 @@
 
 
 #include <msp430.h>
-#include "../globals.h"
+#include "globals.h"
 #include "spi.h"
 
 uint8_t gpRxBuf[SPI_GP_RXBUF_SIZE];
