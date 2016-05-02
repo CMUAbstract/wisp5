@@ -1,3 +1,20 @@
+# libwispbase: interface to system and peripherals on WISP
+
+This repo is a fork of wisp/wisp5 repo, but with all else purged except the
+wisp-base library. The library was then packaged into a Maker package, for
+easy inclusion as a dependency.
+
+The future of this library and this repo is uncertain: libwispbase should be
+factored into smaller components. The components would be generic for MSP430,
+not limited to the WISP platform, e.g. consider the UART code (note that the
+existing libmspconsole lib is not that vision, because it thinly wraps
+libwispbase). At that point it might be cleaner to create new repos that are
+not literal forks of wisp/wisp5 repo but are "logical forks" through citation.
+
+Original README from the wisp/wisp5 repo follows:
+
+
+
 WISP 5
 ====
 
