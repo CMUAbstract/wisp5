@@ -20,6 +20,6 @@ OBJECTS = \
 
 override SRC_ROOT = ../../src
 
-CFLAGS += \
+override CFLAGS += \
 	-I$(SRC_ROOT)/include \
 	-I$(SRC_ROOT)/include/libwispbase \
