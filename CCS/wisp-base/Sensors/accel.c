@@ -130,7 +130,12 @@ void ACCEL_standby() {
 /**
  * Grab one sample from the ADXL362 accelerometer
  */
-BOOL ACCEL_singleSample(threeAxis_t_8* result) {
+#ifdef ACCEL_16BIT_TYPE
+BOOL ACCEL_singleSample(threeAxis_t* result)
+#else
+BOOL ACCEL_singleSample(threeAxis_t_8* result)
+#endif
+{
 
     while(!SPI_acquirePort());
 
@@ -147,7 +152,12 @@ BOOL ACCEL_singleSample(threeAxis_t_8* result) {
     return SUCCESS;
 }
 
-BOOL ACCEL_readStat(threeAxis_t_8* result) {
+#ifdef ACCEL_16BIT_TYPE
+BOOL ACCEL_readStat(threeAxis_t* result)
+#else
+BOOL ACCEL_readStat(threeAxis_t_8* result)
+#endif
+{
 
     while(!SPI_acquirePort());
 
@@ -162,7 +172,12 @@ BOOL ACCEL_readStat(threeAxis_t_8* result) {
     return SUCCESS;
 }
 
-BOOL ACCEL_readID(threeAxis_t_8* result) {
+#ifdef ACCEL_16BIT_TYPE
+BOOL ACCEL_readID(threeAxis_t* result)
+#else
+BOOL ACCEL_readID(threeAxis_t_8* result)
+#endif
+{
 
     while(!SPI_acquirePort());
 
