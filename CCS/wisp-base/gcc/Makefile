@@ -16,6 +16,11 @@ CFLAGS = \
 	-I $(TOOLCHAIN_ROOT)/include \
 	-I $(SRC_DIR) \
 
+# This is to make libwisp-base linkable with app binaries built
+# with LLVM/Clang. Clang crashes with 8BIT type. This only
+# affects accelerometer code.
+CFLAGS += -DACCEL_16BIT_TYPE
+
 VPATH = $(SRC_DIR)
 
 BINARY = libwisp-base.a
