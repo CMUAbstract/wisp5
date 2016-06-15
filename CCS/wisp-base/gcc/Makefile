@@ -1,4 +1,4 @@
-TOOLCHAIN_ROOT := /opt/ti/msp430-gcc
+TOOLCHAIN_ROOT ?= /opt/ti/msp430-gcc
 
 DEVICE  = msp430fr5969
 PREFIX = $(TOOLCHAIN_ROOT)/bin/msp430-elf-
