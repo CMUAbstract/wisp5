@@ -72,7 +72,7 @@ void UART_init(void) {
 #endif // UART_BAUDRATE
 #endif // UART_CLOCK
 
-#if defined(__MSP430FR5969__)
+#if defined(__MSP430FR5969__) || defined(__MSP430FR5949__)
     PUART_TXSEL0 &= ~PIN_UART_TX; // TX pin to UART module
     PUART_TXSEL1 |= PIN_UART_TX;
 
