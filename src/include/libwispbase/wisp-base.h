@@ -12,9 +12,13 @@
 
 //#include <msp430.h>
 #include "libwispbase/globals.h" // Get these outta here (breaks encapsulation barrier)
+#ifdef LIBWISPBASE_INCLUDE_SPI
 #include "libwispbase/spi.h"
+#endif // LIBWISPBASE_INCLUDE_SPI
 #include "libwispbase/uart.h"
+#ifdef LIBWISPBASE_INCLUDE_ACCEL
 #include "libwispbase/accel.h"
+#endif // LIBWISPBASE_INCLUDE_ACCEL
 #include "libwispbase/fram.h"
 #include "libwispbase/rfid.h"
 #include "libwispbase/wispGuts.h"

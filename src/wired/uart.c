@@ -72,11 +72,21 @@ void UART_init(void) {
 #endif // UART_BAUDRATE
 #endif // UART_CLOCK
 
+#if defined(__MSP430FR5969__) || defined(__MSP430FR5949__)
     PUART_TXSEL0 &= ~PIN_UART_TX; // TX pin to UART module
     PUART_TXSEL1 |= PIN_UART_TX;
 
     PUART_RXSEL0 &= ~PIN_UART_RX; // RX pin to UART module
     PUART_RXSEL1 |= PIN_UART_RX;
+#elif defined(__MSP430FR6989__)
+    PUART_TXSEL0 |= PIN_UART_TX; // TX pin to UART module
+    PUART_TXSEL1 &= ~PIN_UART_TX;
+
+    PUART_RXSEL0 |= PIN_UART_RX; // RX pin to UART module
+    PUART_RXSEL1 &= ~PIN_UART_RX;
+#else
+#error MCU not supported
+#endif
 
     UCA0CTLW0 &= ~UCSWRST;                    // Initialize eUSCI
 
