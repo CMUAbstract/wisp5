@@ -56,15 +56,15 @@
  * Port 2
  */
 
-// P2.0 - UART TX - OUTPUT
-#define		PIN_UART_TX				(BIT0)
-#define		PUART_TXSEL0			(P2SEL0)
-#define		PUART_TXSEL1			(P2SEL1)
+// P3.4 - UART TX - OUTPUT
+#define		PIN_UART_TX				(BIT4)
+#define		PUART_TXSEL0			(P3SEL0)
+#define		PUART_TXSEL1			(P3SEL1)
 
-// P2.1 - UART RX - INPUT
-#define		PIN_UART_RX				(BIT1)
-#define		PUART_RXSEL0			(P2SEL0)
-#define		PUART_RXSEL1			(P2SEL1)
+// P3.5 - UART RX - INPUT
+#define		PIN_UART_RX				(BIT5)
+#define		PUART_RXSEL0			(P3SEL0)
+#define		PUART_RXSEL1			(P3SEL1)
 
 // P2.3 - RECEIVE - INPUT
 #define		PIN_RX			(BIT3)
